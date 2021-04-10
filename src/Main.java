@@ -100,9 +100,9 @@ public class Main {
 
         int vandroiden = vulkania.getReperaturandroiden();
 
-        boolean schutzschild = vulkania.Schildeboo(vulkania);
-        boolean energieversorgung= vulkania.Energieversorgungboo(vulkania);
-        boolean schiffshuelle= vulkania.Hülleboo(vulkania);
+        boolean schutzschild = vulkania.Schildeboo();
+        boolean energieversorgung= vulkania.Energieversorgungboo();
+        boolean schiffshuelle= vulkania.Hülleboo();
 
         //System.out.println(schiffshuelle);
 
@@ -111,7 +111,7 @@ public class Main {
 
 
         int zahl= vulkania.LadungsListeV("Photonentorpedo");
-        vulkania.LadeTorpedos(vulkania,zahl);
+        vulkania.LadeTorpedos(zahl);
 
 
 

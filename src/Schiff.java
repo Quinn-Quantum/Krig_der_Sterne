@@ -320,20 +320,31 @@ public class Schiff {
        System.out.println(nachricht);
     }
 
+    /**
+     *
+     * @return  broadcastKommunikator die ArrayListe wird zu rückgegebn
+     */
     public ArrayList <String> EintreageLogbuchZureuckGeben (){
        return broadcastKommunikator;
     }
 
-    public void LadeTorpedos(Schiff raumschiff,int anzahlphotonentorpedos){
-        setPhotonentorpedos(anzahlphotonentorpedos);
+    /**
+     *
+     * @param anzahlphotonentorpedos die Anzahl wie viel dafon noch in der Ladung ist wird übergeben
+     *                               die Anzahl der Aus der Ladung wird denen die schon geladen sind hinzu gefügt
+     *                               Anschließend wird die Ladung gelöscht da sie 0 ist.
+     */
+    //Torpedos Laden
+    public void LadeTorpedos(int anzahlphotonentorpedos){
+        setPhotonentorpedos(getPhotonentorpedos()+anzahlphotonentorpedos); //geladene Torpedos + die aus der Ladung
 
-        int stelle1= raumschiff.ladungsliste.indexOf("Photonentorpedo");
-       raumschiff.ladungsliste.remove("Photonentorpedo");
-        int stelle2= raumschiff.ladungsliste.indexOf(anzahlphotonentorpedos);
-       raumschiff.ladungsliste.remove(stelle2);
+        int stelle1= ladungsliste.indexOf("Photonentorpedo");
+       ladungsliste.remove("Photonentorpedo");
+        int stelle2= ladungsliste.indexOf(anzahlphotonentorpedos);
+       ladungsliste.remove(stelle2);
 
 
-       for (Ladung i : raumschiff.ladungsliste){
+       for (Ladung i : ladungsliste){
            if(i.getTyp().equals("Photonentorpedo")){
 
            }
@@ -344,27 +355,43 @@ public class Schiff {
 
     }
 
-
-    public boolean Schildeboo(Schiff raumschiff){
-        return raumschiff.getSchilde() < 100;
+    /**
+     *
+     * Diese drei Methoden überprüfen ob die Abwehr der Schüffe beschädigt ist
+     * @return es wird der Aktuellestand als Boolean zurückgegebn: true bei beschädigung
+     */
+    //Schild überprüfen
+    public boolean Schildeboo(){
+        return getSchilde() < 100;
     }
-    public boolean Energieversorgungboo(Schiff raumschiff){
-        return raumschiff.getEnergieversorgung() < 100;
+    //E überprüfen
+    public boolean Energieversorgungboo(){
+        return getEnergieversorgung() < 100;
     }
-    public boolean Hülleboo(Schiff raumschiff){
-        return raumschiff.getHülle() < 100;
+    //Hülle überprüfen
+    public boolean Hülleboo(){
+        return getHülle() < 100;
     }
 
-
+    /**
+     *
+     * @param reperaturandroiden die Anzahl der Androiden wenn er Null ist kann nichts reperiert werden
+     * @param schutzschilt ist der Wehrt tru kann er reperriert werden, bei falls ist er ganz
+     * @param energieversorgung ist der Wehrt tru kann er reperriert werden, bei falls ist er ganz
+     * @param schiffshuelle ist der Wehrt tru kann er reperriert werden, bei falls ist er ganz
+     *                      zu berechnung der reperatur: (anzahl Androiden* Zufalszahl)/anzahl der zureperiernden Bestanteile des Schiffes
+     *                      anschlißend wird das ergebniss auf die Paramenter draufgerechnet
+     *                      Die Zufalszahl lierg zwischen 0 und 100
+     */
 
     public void ReparaturDurchfueren(int reperaturandroiden, boolean schutzschilt, boolean energieversorgung,
             boolean schiffshuelle) {
         //Zaufaszahl generieren zwischen 0 und 100
         Random ran = new Random();
         int zufalszahl = ran.nextInt(100 + 1);
-        System.out.println("Ran: "+zufalszahl);
+        //System.out.println("Ran: "+zufalszahl);
         int ergebniss=0;
-
+        //Wenn drei sachen beschädigt sind
         if(schutzschilt && energieversorgung && schiffshuelle) {
             ergebniss = (zufalszahl * reperaturandroiden) / 3;
             setSchilde(getSchilde()+ergebniss);
@@ -372,31 +399,32 @@ public class Schiff {
             setHülle(getHülle()+ergebniss);
 
         }
+        //Wenn zwei sachen beschädigt sind
         if ((schutzschilt && energieversorgung && !schiffshuelle)||(schutzschilt && !energieversorgung && schiffshuelle)||(!schutzschilt && energieversorgung && schiffshuelle)){
             ergebniss = (zufalszahl*reperaturandroiden)/2;
-            if(schutzschilt && energieversorgung){
+            if(schutzschilt && energieversorgung){ //Schild und E beschädigt
                 setSchilde(getSchilde()+ergebniss);
                 setEnergieversorgung(getEnergieversorgung()+ergebniss);
             }
-            if(schutzschilt && schiffshuelle){
+            if(schutzschilt && schiffshuelle){ //Schild und Hülle beschädigt
                 setSchilde(getSchilde()+ergebniss);
                 setHülle(getHülle()+ergebniss);
             }
-            if(energieversorgung && schiffshuelle){
+            if(energieversorgung && schiffshuelle){ //E und Hülle beschädigt
                 setEnergieversorgung(getEnergieversorgung()+ergebniss);
                 setHülle(getHülle()+ergebniss);
             }
         }
-
+        //Wenn eine sachen beschädigt sind
         if(schutzschilt || energieversorgung || schiffshuelle){
             ergebniss = (zufalszahl*reperaturandroiden);
-            if(schutzschilt){
+            if(schutzschilt){//Schild beschädigt
                 setSchilde(getSchilde()+ergebniss);
             }
-            if(energieversorgung ){
+            if(energieversorgung ){ //E beschädigt
                 setEnergieversorgung(getEnergieversorgung()+ergebniss);
             }
-            if(schiffshuelle){
+            if(schiffshuelle){ //Hülle beschädigt
                 setHülle(getHülle()+ergebniss);
             }
 
