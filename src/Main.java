@@ -102,9 +102,9 @@ public class Main {
         //Rückgabe des broadcastKommunikator
         ArrayList<String> ausgabe = new ArrayList<String>();
            ausgabe = romulaner.EintreageLogbuchZureuckGeben ();
-        for(String x:ausgabe)
+        for(String rueckgabe:ausgabe)
         {
-            System.out.println(x);
+            System.out.println("Text: "+rueckgabe);
         }
 
         int vandroiden = vulkania.getReperaturandroiden();

@@ -339,16 +339,17 @@ public class Schiff {
     //Torpedos Laden
     public void LadeTorpedos(int anzahlphotonentorpedos){
         setPhotonentorpedos(getPhotonentorpedos()+anzahlphotonentorpedos); //geladene Torpedos + die aus der Ladung
-
+        int i =0;
         //Löschen der lehren Ladung
        for (Ladung j : ladungsliste){
-           if(j.getTyp().equals("Photonentorpedo")){
-               ladungsliste.remove(j.getTyp());
-               ladungsliste.remove(j.getAnzahl());
+            i ++;
+           if(j.getTyp().equals("Photonentorpedo")) {
+               j.setAnzahl(0);
+               }
 
-           }
+               ladungsliste.remove(i);
 
-         // System.out.println("\nObjekt: "+j.getTyp()+ " da von vorhanden:  " + j.getAnzahl());
+         System.out.println("\nObjekt: "+j.getTyp()+ " da von vorhanden:  " + j.getAnzahl());
         }
 
 
