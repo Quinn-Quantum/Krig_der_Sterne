@@ -6,11 +6,11 @@ public class Schiff {
     private int energieversorgung;
     private int schilde;
     private int lebenserhaltung;
-    private int hülle;
+    private int huelle;
     private int photonentorpedos;
     private int reperaturandroiden;
     private static ArrayList<String> broadcastKommunikator = new ArrayList<String>();
-    private ArrayList<Ladung> ladungsliste = new ArrayList<Ladung>();
+    private ArrayList<Ladung> ladungsliste = new ArrayList<>();
 
     // Konstruktoren
     public Schiff() {
@@ -24,17 +24,17 @@ public class Schiff {
      * @param energieversorgung  sagt aus wie viel E das zugegortnete Schiff hatt als int
      * @param schilde            sagt aus wie viel % Schild das zugeordnete Schiff hatt als int
      * @param lebenserhaltung    sagt aus ob lebenserhaltung noch vorhanden ist als int
-     * @param hülle              sagt ob die hülle da ist als int
+     * @param huelle              sagt ob die hülle da ist als int
      * @param photonentorpedos   gib die Anzahl der Torpedos als int
      * @param reperaturandroiden gibt die Anzahlder Droiden als  int
      */
-    public Schiff(String nameSchiff, int energieversorgung, int schilde, int lebenserhaltung, int hülle,
+    public Schiff(String nameSchiff, int energieversorgung, int schilde, int lebenserhaltung, int huelle,
             int photonentorpedos, int reperaturandroiden) {
         this.nameSchiff = nameSchiff;
         this.energieversorgung = energieversorgung;
         this.schilde = schilde;
         this.lebenserhaltung = lebenserhaltung;
-        this.hülle = hülle;
+        this.huelle = huelle;
         this.photonentorpedos = photonentorpedos;
         this.reperaturandroiden = reperaturandroiden;
     }
@@ -111,20 +111,20 @@ public class Schiff {
 
     /**
      *
-     * @return hülle als int
+     * @return huelle als int
      */
 
-    public int getHülle() {
-        return hülle;
+    public int getHuelle() {
+        return huelle;
     }
 
     /**
      *
-     * @param hülle wird gesetzt
+     * @param huelle wird gesetzt
      */
 
-    public void setHülle(int hülle) {
-        this.hülle = hülle;
+    public void setHuelle(int huelle) {
+        this.huelle = huelle;
     }
 
     /**
@@ -180,7 +180,7 @@ public class Schiff {
 
     //Zustand des Schiffes
     public void ZustandSchiff(){
-      System.out.println ("Zustandt des Schiffs: "+ nameSchiff + "\n\tEnergieversorgung: "+energieversorgung+ "\n\tSchilde: "+schilde+"\n\tLebenserhaltung: "+lebenserhaltung+"\n\tHüll: "+hülle+"\n\tPhotonentopedos: "+photonentorpedos+"\n\tReperaturandroiden: "+reperaturandroiden+"\n");
+      System.out.println ("Zustandt des Schiffs: "+ nameSchiff + "\n\tEnergieversorgung: "+energieversorgung+ "\n\tSchilde: "+schilde+"\n\tLebenserhaltung: "+lebenserhaltung+"\n\tHüll: "+huelle+"\n\tPhotonentopedos: "+photonentorpedos+"\n\tReperaturandroiden: "+reperaturandroiden+"\n");
     }
 
     /**
@@ -191,7 +191,7 @@ public class Schiff {
     //Ladung Ausgeben
     public void LadungsListe(){
         for (Ladung i : ladungsliste){
-            System.out.println("\nObjekt: "+i.getTyp()+ " da von vorhande:  " + i.getAnzahl());
+            System.out.println("\nObjekt: "+i.getTyp()+ " da von vorhanden:  " + i.getAnzahl());
         }
 
     }
@@ -215,36 +215,36 @@ public class Schiff {
      */
 
     //Schießen
-    public void Torpedoschissen (Schiff angezieltesSchiff, int anzahlderschüsse){
+    public void Torpedoschissen (Schiff angezieltesSchiff, int anzahlderscheusse){
         int zahl= LadungsListeV("Photonentorpedo");
         int bitte =getPhotonentorpedos();
         System.out.println (bitte);
 
 
-        if (getPhotonentorpedos()>0 && getPhotonentorpedos() >= anzahlderschüsse){
+        if (getPhotonentorpedos()>0 && getPhotonentorpedos() >= anzahlderscheusse){
 
-            System.out.println(anzahlderschüsse + " Photonentorpedo(s) eingesetzt");
-            setPhotonentorpedos(getPhotonentorpedos() - anzahlderschüsse);
+            System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
+            setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
             NachrichtAnAlle("Photonentorpedo wurde Abgeschossen");
             Treffer(angezieltesSchiff);
 
         }
-        if ( getPhotonentorpedos()<anzahlderschüsse && anzahlderschüsse<=zahl){
+        if ( getPhotonentorpedos()<anzahlderscheusse && anzahlderscheusse<=zahl){
 
             setPhotonentorpedos(zahl);
-            System.out.println(anzahlderschüsse + " Photonentorpedo(s) eingesetzt");
-            setPhotonentorpedos(getPhotonentorpedos() - anzahlderschüsse);
+            System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
+            setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
             NachrichtAnAlle("Photonentorpedo wurde Abgeschossen");
             Treffer(angezieltesSchiff);
 
 
         }
-        if (anzahlderschüsse > zahl && zahl >0 ){
+        if (anzahlderscheusse > zahl && zahl >0 ){
 
-            anzahlderschüsse = zahl;
+            anzahlderscheusse = zahl;
             setPhotonentorpedos(zahl);
-            System.out.println(anzahlderschüsse + " Photonentorpedo(s) eingesetzt");
-           setPhotonentorpedos(getPhotonentorpedos() - anzahlderschüsse);
+            System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
+           setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
             NachrichtAnAlle("Photonentorpedo wurde Abgeschossen");
             Treffer(angezieltesSchiff);
         }
@@ -287,10 +287,10 @@ public class Schiff {
             getroffenesSchiff.setSchilde(0);
         }
         if (getroffenesSchiff.getSchilde()<=0){
-            getroffenesSchiff.setHülle(getroffenesSchiff.getHülle()-50);
+            getroffenesSchiff.setHuelle(getroffenesSchiff.getHuelle()-50);
             //Hülle kann nicht weniger als 0 sein
-            if(getroffenesSchiff.getHülle()<0){
-                getroffenesSchiff.setHülle(0);
+            if(getroffenesSchiff.getHuelle()<0){
+                getroffenesSchiff.setHuelle(0);
             }
             getroffenesSchiff.setEnergieversorgung(getroffenesSchiff.getEnergieversorgung()-50);
             //E kann nicht weniger als 0 sein
@@ -298,7 +298,7 @@ public class Schiff {
                 getroffenesSchiff.setEnergieversorgung(0);
             }
         }
-        if(getroffenesSchiff.getHülle() <=0){
+        if(getroffenesSchiff.getHuelle() <=0){
             getroffenesSchiff.setLebenserhaltung(0);
             NachrichtAnAlle(getroffenesSchiff.getNameSchiff()+ " Lebenserhaltungssysteme ausgefallen \n Schiff am ende!");
 
@@ -338,18 +338,15 @@ public class Schiff {
     public void LadeTorpedos(int anzahlphotonentorpedos){
         setPhotonentorpedos(getPhotonentorpedos()+anzahlphotonentorpedos); //geladene Torpedos + die aus der Ladung
 
-        int stelle1= ladungsliste.indexOf("Photonentorpedo");
-       ladungsliste.remove("Photonentorpedo");
-        int stelle2= ladungsliste.indexOf(anzahlphotonentorpedos);
-       ladungsliste.remove(stelle2);
-
-
-       for (Ladung i : ladungsliste){
-           if(i.getTyp().equals("Photonentorpedo")){
+        //Löschen der lehren Ladung
+       for (Ladung j : ladungsliste){
+           if(j.getTyp().equals("Photonentorpedo")){
+               ladungsliste.remove(j.getTyp());
+               ladungsliste.remove(j.getAnzahl());
 
            }
 
-          System.out.println("\nObjekt: "+i.getTyp()+ " da von vorhande:  " + i.getAnzahl());
+         // System.out.println("\nObjekt: "+j.getTyp()+ " da von vorhanden:  " + j.getAnzahl());
         }
 
 
@@ -370,7 +367,7 @@ public class Schiff {
     }
     //Hülle überprüfen
     public boolean Hülleboo(){
-        return getHülle() < 100;
+        return getHuelle() < 100;
     }
 
     /**
@@ -390,13 +387,13 @@ public class Schiff {
         Random ran = new Random();
         int zufalszahl = ran.nextInt(100 + 1);
         //System.out.println("Ran: "+zufalszahl);
-        int ergebniss=0;
+        int ergebniss;
         //Wenn drei sachen beschädigt sind
         if(schutzschilt && energieversorgung && schiffshuelle) {
             ergebniss = (zufalszahl * reperaturandroiden) / 3;
             setSchilde(getSchilde()+ergebniss);
             setEnergieversorgung(getEnergieversorgung()+ergebniss);
-            setHülle(getHülle()+ergebniss);
+            setHuelle(getHuelle()+ergebniss);
 
         }
         //Wenn zwei sachen beschädigt sind
@@ -408,11 +405,11 @@ public class Schiff {
             }
             if(schutzschilt && schiffshuelle){ //Schild und Hülle beschädigt
                 setSchilde(getSchilde()+ergebniss);
-                setHülle(getHülle()+ergebniss);
+                setHuelle(getHuelle()+ergebniss);
             }
             if(energieversorgung && schiffshuelle){ //E und Hülle beschädigt
                 setEnergieversorgung(getEnergieversorgung()+ergebniss);
-                setHülle(getHülle()+ergebniss);
+                setHuelle(getHuelle()+ergebniss);
             }
         }
         //Wenn eine sachen beschädigt sind
@@ -425,7 +422,7 @@ public class Schiff {
                 setEnergieversorgung(getEnergieversorgung()+ergebniss);
             }
             if(schiffshuelle){ //Hülle beschädigt
-                setHülle(getHülle()+ergebniss);
+                setHuelle(getHuelle()+ergebniss);
             }
 
         }

@@ -47,7 +47,7 @@ public class Main {
     klingonen.setPhotonentorpedos(1);
     klingonen.setEnergieversorgung(100);
     klingonen.setSchilde(100);
-    klingonen.setHülle(100);
+    klingonen.setHuelle(100);
     klingonen.setLebenserhaltung(100);
     klingonen.setNameSchiff("IKS Hegh´ta");
     klingonen.setReperaturandroiden(2);
@@ -59,7 +59,7 @@ public class Main {
     romulaner.setPhotonentorpedos(2);
     romulaner.setEnergieversorgung(100);
     romulaner.setSchilde(100);
-    romulaner.setHülle(100);
+    romulaner.setHuelle(100);
     romulaner.setLebenserhaltung(100);
     romulaner.setNameSchiff("IKS Khazara");
     romulaner.setReperaturandroiden(2);
@@ -71,7 +71,7 @@ public class Main {
         vulkania.setPhotonentorpedos(0);
         vulkania.setEnergieversorgung(80);
         vulkania.setSchilde(80);
-        vulkania.setHülle(50);
+        vulkania.setHuelle(50);
         vulkania.setLebenserhaltung(100);
         vulkania.setNameSchiff("Ni´Var");
         vulkania.setReperaturandroiden(5);
@@ -96,7 +96,7 @@ public class Main {
         vulkania.ZustandSchiff();
         vulkania.LadungsListe();
 
-
+        //Zusatz
 
         int vandroiden = vulkania.getReperaturandroiden();
 
@@ -109,9 +109,11 @@ public class Main {
         vulkania.ReparaturDurchfueren(vandroiden, schutzschild, energieversorgung,
         schiffshuelle);
 
-
         int zahl= vulkania.LadungsListeV("Photonentorpedo");
         vulkania.LadeTorpedos(zahl);
+
+       romulaner.EintreageLogbuchZureuckGeben ();
+
 
 
 
