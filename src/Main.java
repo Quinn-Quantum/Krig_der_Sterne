@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**@author Maria
  *@throws Main Classe zum verbinden der klassen
  */
@@ -97,6 +99,13 @@ public class Main {
         vulkania.LadungsListe();
 
         //Zusatz
+        //Rückgabe des broadcastKommunikator
+        ArrayList<String> ausgabe = new ArrayList<String>();
+           ausgabe = romulaner.EintreageLogbuchZureuckGeben ();
+        for(String x:ausgabe)
+        {
+            System.out.println(x);
+        }
 
         int vandroiden = vulkania.getReperaturandroiden();
 
@@ -112,7 +121,7 @@ public class Main {
         int zahl= vulkania.LadungsListeV("Photonentorpedo");
         vulkania.LadeTorpedos(zahl);
 
-       romulaner.EintreageLogbuchZureuckGeben ();
+
 
 
 

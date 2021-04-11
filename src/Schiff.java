@@ -322,11 +322,13 @@ public class Schiff {
 
     /**
      *
-     * @return  broadcastKommunikator die ArrayListe wird zu rückgegebn
+     * @return broadcastKommunikator als ArrayList
      */
+
     public ArrayList <String> EintreageLogbuchZureuckGeben (){
-       return broadcastKommunikator;
+        return broadcastKommunikator;
     }
+
 
     /**
      *
