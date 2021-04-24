@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+//import java.util.Collection;
+//import java.util.Iterator;
 import java.util.Random;
+//import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Schiff {
     private String nameSchiff;
@@ -19,17 +22,17 @@ public class Schiff {
 
     /**
      * Konstrukter zu Implimentierung von der Klasse Schiffe
-     * 
+     *
      * @param nameSchiff         speichert die Namen der Schiffe zu den Opjekte erstellt wurden als String
      * @param energieversorgung  sagt aus wie viel E das zugegortnete Schiff hatt als int
      * @param schilde            sagt aus wie viel % Schild das zugeordnete Schiff hatt als int
      * @param lebenserhaltung    sagt aus ob lebenserhaltung noch vorhanden ist als int
-     * @param huelle              sagt ob die hülle da ist als int
+     * @param huelle             sagt ob die hülle da ist als int
      * @param photonentorpedos   gib die Anzahl der Torpedos als int
      * @param reperaturandroiden gibt die Anzahlder Droiden als  int
      */
     public Schiff(String nameSchiff, int energieversorgung, int schilde, int lebenserhaltung, int huelle,
-            int photonentorpedos, int reperaturandroiden) {
+                  int photonentorpedos, int reperaturandroiden) {
         this.nameSchiff = nameSchiff;
         this.energieversorgung = energieversorgung;
         this.schilde = schilde;
@@ -40,6 +43,7 @@ public class Schiff {
     }
 
     // Verwaltungsmethoden
+
     /**
      * @return nameSchiff wenn nameSchiff gesetzt wurde zurück als String
      */
@@ -49,6 +53,7 @@ public class Schiff {
 
     /**
      * Um Schiffs Name zu erzeugen
+     *
      * @param nameSchiff wird auf den Namen des Schiffes gesetzt
      */
     public void setNameSchiff(String nameSchiff) {
@@ -65,7 +70,6 @@ public class Schiff {
 
 
     /**
-     *
      * @param energieversorgung wird gesetzt
      */
 
@@ -75,6 +79,7 @@ public class Schiff {
 
     /**
      * wert des Schildes wird zurück gegeben
+     *
      * @return schilde als int
      */
 
@@ -83,7 +88,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @param schilde wird gesetzt
      */
 
@@ -92,7 +96,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @return lebenserhaltung als int
      */
 
@@ -101,7 +104,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @param lebenserhaltung wird gesetzt
      */
 
@@ -110,7 +112,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @return huelle als int
      */
 
@@ -119,7 +120,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @param huelle wird gesetzt
      */
 
@@ -128,7 +128,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @return photonentorpedos als int
      */
 
@@ -137,7 +136,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @param photonentorpedos wird gesetzt
      */
 
@@ -146,7 +144,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @return reperaturandroiden als int
      */
 
@@ -155,7 +152,6 @@ public class Schiff {
     }
 
     /**
-     *
      * @param reperaturandroiden weird gesetzt
      */
 
@@ -166,7 +162,6 @@ public class Schiff {
     // Funktionen
 
     /**
-     *
      * @param Ladung wird hir den Speicher zugeordnet
      */
     // nur der Speicher wird weiter gegeben
@@ -179,8 +174,11 @@ public class Schiff {
      */
 
     //Zustand des Schiffes
-    public void ZustandSchiff(){
-      System.out.println ("Zustandt des Schiffs: "+ nameSchiff + "\n\tEnergieversorgung: "+energieversorgung+ "\n\tSchilde: "+schilde+"\n\tLebenserhaltung: "+lebenserhaltung+"\n\tHüll: "+huelle+"\n\tPhotonentopedos: "+photonentorpedos+"\n\tReperaturandroiden: "+reperaturandroiden+"\n");
+    public void ZustandSchiff() {
+        System.out.println("Zustandt des Schiffs: " + getNameSchiff() + "\n\tEnergieversorgung: " + getEnergieversorgung() +
+                "\n\tSchilde: " + getSchilde() + "\n\tLebenserhaltung: " + getLebenserhaltung() + "\n\tHüll: " + getHuelle() +
+                "\n\tPhotonentopedos: " + getPhotonentorpedos() + "\n\tReperaturandroiden: " + getReperaturandroiden() + "\n");
+
     }
 
     /**
@@ -189,14 +187,15 @@ public class Schiff {
      */
 
     //Ladung Ausgeben
-    public void LadungsListe(){
-        for (Ladung i : ladungsliste){
-            System.out.println("\nObjekt: "+i.getTyp()+ " da von vorhanden:  " + i.getAnzahl());
+    public void LadungsListe() {
+        for (Ladung i : ladungsliste) {
+            System.out.println("\nObjekt: " + i.getTyp() + " da von vorhanden:  " + i.getAnzahl());
         }
 
     }
+
     public int LadungsListeV(String ladung) {
-        int zahl=0;
+        int zahl = 0;
         for (Ladung i : ladungsliste) {
             if (i.getTyp().equals(ladung)) {
                 zahl = i.getAnzahl();
@@ -207,7 +206,6 @@ public class Schiff {
 
 
     /**
-     *
      * @param angezieltesSchiff ist das Schiff was dan in die Methode Treffer übergeben wird
      *                          Solange es mehr als 0 Torpedos gibt wird if ausgeführt und das gegnerische Schiff wird getroffen
      *                          nach der Ausführung wird 1 Torpedo abgezogen
@@ -215,13 +213,13 @@ public class Schiff {
      */
 
     //Schießen
-    public void Torpedoschissen (Schiff angezieltesSchiff, int anzahlderscheusse){
-        int zahl= LadungsListeV("Photonentorpedo");
-        int bitte =getPhotonentorpedos();
-        System.out.println (bitte);
+    public void Torpedoschissen(Schiff angezieltesSchiff, int anzahlderscheusse) {
+        int zahl = LadungsListeV("Photonentorpedo");
+        int bitte = getPhotonentorpedos();
+        System.out.println("Anzahl geladener Torpedos: " + bitte);
 
 
-        if (getPhotonentorpedos()>0 && getPhotonentorpedos() >= anzahlderscheusse){
+        if (getPhotonentorpedos() > 0 && getPhotonentorpedos() >= anzahlderscheusse) {
 
             System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
             setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
@@ -229,7 +227,7 @@ public class Schiff {
             Treffer(angezieltesSchiff);
 
         }
-        if ( getPhotonentorpedos()<anzahlderscheusse && anzahlderscheusse<=zahl){
+        if (getPhotonentorpedos() < anzahlderscheusse && anzahlderscheusse <= zahl) {
 
             setPhotonentorpedos(zahl);
             System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
@@ -239,36 +237,36 @@ public class Schiff {
 
 
         }
-        if (anzahlderscheusse > zahl && zahl >0 ){
+        if (anzahlderscheusse > zahl && zahl > 0) {
 
             anzahlderscheusse = zahl;
             setPhotonentorpedos(zahl);
             System.out.println(anzahlderscheusse + " Photonentorpedo(s) eingesetzt");
-           setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
+            setPhotonentorpedos(getPhotonentorpedos() - anzahlderscheusse);
             NachrichtAnAlle("Photonentorpedo wurde Abgeschossen");
             Treffer(angezieltesSchiff);
-        }
 
-        else {NachrichtAnAlle("-=*Click*=-\n");
-        System.out.println("keine Photonentorpedos mehr geladen");}
+        } else {
+            NachrichtAnAlle("-=*Click*=-\n");
+
+            System.out.println("keine Photonentorpedos mehr geladen");
+        }
 
     }
 
     /**
-     *
      * @param angezieltesSchiff wird an Treffer übergeben nach der erfolgreichen Ausführung der if Verzweigung
      *                          die if wird solange ausgeführt wie das ausführende Schiff mehr als 50 enrgieversorgung hatt
      *                          nach der Ausführung werden 50  von energieversorgung  abgezogen
      *                          ansonsten wird else ausgeführt und es wird Click zu rückgegeben
      */
 
-    public void Phasenkanoneschissen (Schiff angezieltesSchiff){
-        if (energieversorgung>= 50){
-            energieversorgung -=  50;
+    public void Phasenkanoneschissen(Schiff angezieltesSchiff) {
+        if (energieversorgung >= 50) {
+            energieversorgung -= 50;
             NachrichtAnAlle("Phassenkanone wurde Abgeschossen\n");
             Treffer(angezieltesSchiff);
-        }
-        else {
+        } else {
             NachrichtAnAlle("-=*Click*=-");
 
         }
@@ -276,62 +274,62 @@ public class Schiff {
     }
 
     /**
-     *
      * @param getroffenesSchiff wird ausgegeben mit .name Schiff um nicht den Speicherplatz zubekommen sonder den zugeortnetten Namen
+     *                          In der Methode wird sichergestellt das keiner der Werte unter Null ist.
+     *                          Solte ein Wert durchs abzihen des Schdens kleiner Null werden wird er auf Null gesetzt.
+     *                          Ist ein Wet Null wird der Schaden von der Schutzeinhrichtung da nach abgezogen.
+     *                          Sind alle Variablen Null wird ein entsprächneder Text ausgegeben.
      */
 
-    private void Treffer (Schiff getroffenesSchiff){
-        getroffenesSchiff.setSchilde (getroffenesSchiff.getSchilde()-50);
+    private void Treffer(Schiff getroffenesSchiff) {
+        getroffenesSchiff.setSchilde(getroffenesSchiff.getSchilde() - 50);
         //Schilde können nicht weniger Als 0 sein
-        if(getroffenesSchiff.getSchilde()<0){
+        if (getroffenesSchiff.getSchilde() < 0) {
             getroffenesSchiff.setSchilde(0);
         }
-        if (getroffenesSchiff.getSchilde()<=0){
-            getroffenesSchiff.setHuelle(getroffenesSchiff.getHuelle()-50);
+        if (getroffenesSchiff.getSchilde() <= 0) {
+            getroffenesSchiff.setHuelle(getroffenesSchiff.getHuelle() - 50);
             //Hülle kann nicht weniger als 0 sein
-            if(getroffenesSchiff.getHuelle()<0){
+            if (getroffenesSchiff.getHuelle() < 0) {
                 getroffenesSchiff.setHuelle(0);
             }
-            getroffenesSchiff.setEnergieversorgung(getroffenesSchiff.getEnergieversorgung()-50);
+            getroffenesSchiff.setEnergieversorgung(getroffenesSchiff.getEnergieversorgung() - 50);
             //E kann nicht weniger als 0 sein
-            if(getroffenesSchiff.getEnergieversorgung()<0){
+            if (getroffenesSchiff.getEnergieversorgung() < 0) {
                 getroffenesSchiff.setEnergieversorgung(0);
             }
         }
-        if(getroffenesSchiff.getHuelle() <=0){
+        if (getroffenesSchiff.getHuelle() <= 0) {
             getroffenesSchiff.setLebenserhaltung(0);
-            NachrichtAnAlle(getroffenesSchiff.getNameSchiff()+ " Lebenserhaltungssysteme ausgefallen \n Schiff am ende!");
+            NachrichtAnAlle(getroffenesSchiff.getNameSchiff() + " Lebenserhaltungssysteme ausgefallen \n Schiff am ende!");
 
         }
 
-       //System.out.println(getroffenesSchiff.getNameSchiff() +" wurde getroffen\n");
+        //System.out.println(getroffenesSchiff.getNameSchiff() +" wurde getroffen\n");
     }
 
     //Nachricht
 
     /**
-     *
      * @param nachricht word Ausgegeben diese geht an Alle
      */
 
     //Nachricht die Alle erreicht
-    public void NachrichtAnAlle (String nachricht ){
-       broadcastKommunikator.add(nachricht);
-       System.out.println(nachricht);
+    public void NachrichtAnAlle(String nachricht) {
+        broadcastKommunikator.add(nachricht);
+        System.out.println(nachricht);
     }
 
     /**
-     *
      * @return broadcastKommunikator als ArrayList
      */
 
-    public ArrayList <String> EintreageLogbuchZureuckGeben (){
+    public ArrayList<String> EintreageLogbuchZureuckGeben() {
         return broadcastKommunikator;
     }
 
 
     /**
-     *
      * @param anzahlphotonentorpedos die Anzahl wie viel dafon noch in der Ladung ist wird übergeben
      *                               die Anzahl der Aus der Ladung wird denen die schon geladen sind hinzu gefügt
      *                               Anschließend wird die Ladung gelöscht da sie 0 ist.
@@ -341,19 +339,19 @@ public class Schiff {
         setPhotonentorpedos(getPhotonentorpedos()+anzahlphotonentorpedos); //geladene Torpedos + die aus der Ladung
         int i =0;
         //Löschen der lehren Ladung
-       for (Ladung j : ladungsliste){
+        for (Ladung j : ladungsliste){
             i ++;
-           if(j.getTyp().equals("Photonentorpedo")) {
-               j.setAnzahl(0);
-               }
+            if(j.getTyp().equals("Photonentorpedo")) {
+                j.setAnzahl(0);
+            }
 
-               ladungsliste.remove(i);
+            ladungsliste.remove(i);
 
-         System.out.println("\nObjekt: "+j.getTyp()+ " da von vorhanden:  " + j.getAnzahl());
         }
 
 
     }
+
 
     /**
      *
@@ -431,9 +429,6 @@ public class Schiff {
         }
 
         }
-
-
-
 
 
 }
